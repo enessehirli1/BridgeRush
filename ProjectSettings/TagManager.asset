@@ -7,6 +7,9 @@ TagManager:
   - Breakable
   - barbedFence
   - triggerNext
+  - Mutant
+  - Fence
+  - Bridge
   layers:
   - Default
   - TransparentFX

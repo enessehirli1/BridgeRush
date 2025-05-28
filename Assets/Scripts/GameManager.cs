@@ -340,6 +340,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void endGameMutant()
+    {
+        if (gameHasEnded == false)
+        {
+            remainingLives = 0;
+            Debug.Log("Life Lost - Remaining Lives: " + remainingLives);
+
+            gameHasEnded = true; // Önce bunu set et ki tekrar çağırılmasın
+
+            bool isGrounded = IsPlayerGrounded();
+            Debug.Log("Player is grounded: " + isGrounded);
+
+            // Ölüm animasyonunu oynat
+            PlayDeathAnimation(isGrounded);
+
+            if (remainingLives <= 0)
+            {
+                remainingLives = initialLives;
+
+                if (ScoreManager.instance != null)
+                {
+                    ScoreManager.instance.GameOver();
+                }
+
+                Debug.Log("Game Over - No Lives Left. Restarting from first level with " + remainingLives + " lives");
+
+                float delay = isGrounded ? restartDelay : 1f;
+                Invoke("RestartFromFirstLevel", delay);
+            }
+            else
+            {
+                if (ScoreManager.instance != null)
+                {
+                    ScoreManager.instance.PlayerDied();
+                }
+
+                float delay = isGrounded ? restartDelay : 1f;
+                Invoke("Restart", delay);
+            }
+        }
+    }
+
     void PlayDeathAnimation(bool isGrounded)
     {
         if (playerAnimator != null)

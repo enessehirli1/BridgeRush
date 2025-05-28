@@ -26,7 +26,7 @@ public class ObjectInteractions : MonoBehaviour
         if (hasTriggered) return;
 
         // Breakable tag'ine sahip objeye çarptığında
-        if (other.CompareTag("Breakable"))
+        if (other.CompareTag("Breakable") || other.CompareTag("Mutant") || other.CompareTag("barbedFence") || other.CompareTag("Bridge"))
         {
             Debug.Log("Breakable objeye çarpıldı! Oyun bitiyor...");
 
@@ -34,7 +34,11 @@ public class ObjectInteractions : MonoBehaviour
             if (gameManager != null)
             {
                 hasTriggered = true; // Tekrar trigger olmasını engelle
-                gameManager.endGame();
+                if (other.CompareTag("Breakable") || other.CompareTag("barbedFence") || other.CompareTag("Bridge"))
+                    gameManager.endGame();
+                else if (other.CompareTag("Mutant"))
+                    gameManager.endGameMutant();
+                
             }
             else
             {

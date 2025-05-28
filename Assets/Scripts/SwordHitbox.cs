@@ -17,6 +17,13 @@ public class SwordHitbox : MonoBehaviour
     [SerializeField] private float destroyDelay = 0.1f; // Efekt baþladýktan sonra yok olma gecikmesi
     [SerializeField] private bool useSimpleDestroy = false; // Basit destroy mu yoksa efekt mi kullanýlsýn
 
+    [Header("Mutant Özel Efektleri")]
+    [SerializeField] private GameObject mutantBloodEffect; // Mutant kan efekti prefab'ý
+    [SerializeField] private int mutantFragmentCount = 15; // Mutant için parça sayýsý (normal objeler için 8)
+    [SerializeField] private float mutantExplosionForce = 8f; // Mutant patlama kuvveti (normal için 5f)
+    [SerializeField] private Color mutantBloodColor = new Color(0.8f, 0f, 0f, 1f); // Kan rengi
+    [SerializeField] private float mutantFragmentLifetime = 4f; // Mutant parçalarýnýn yaþam süresi
+
     private Animator animator; // Karakterin animatörü
     private bool hitboxActive = false;
 
@@ -79,6 +86,14 @@ public class SwordHitbox : MonoBehaviour
                         StartCoroutine(BreakObject(hitCollider.gameObject));
                     }
                 }
+                // Mutant kontrolü ekle
+                else if (hitCollider.CompareTag("Mutant"))
+                {
+                    Debug.Log("Mutant " + hitCollider.name + " öldürüldü!");
+
+                    // Mutant özel efekti
+                    StartCoroutine(KillMutant(hitCollider.gameObject));
+                }
             }
         }
     }
@@ -116,7 +131,7 @@ public class SwordHitbox : MonoBehaviour
         else
         {
             // Basit küp parçacýklarý oluþtur (efekt prefabý yoksa)
-            CreateCubeFragments(objPosition, objColor, objectToBreak.transform.localScale);
+            CreateCubeFragments(objPosition, objColor, objectToBreak.transform.localScale, false);
         }
 
         // Kýsa bir gecikme
@@ -126,12 +141,49 @@ public class SwordHitbox : MonoBehaviour
         Destroy(objectToBreak);
     }
 
-    // Basit küp parçacýklarý oluþturan fonksiyon (eðer hazýr efekt yoksa)
-    private void CreateCubeFragments(Vector3 position, Color color, Vector3 originalScale)
+    // Mutant öldürme fonksiyonu
+    private IEnumerator KillMutant(GameObject mutant)
     {
-        int fragmentCount = 8; // Kaç parça olacaðý
-        float fragmentSize = originalScale.x * 0.3f; // Küçük küplerin boyutu, orijinal boyuttan oran olarak hesapla
-        float explosionForce = 5f; // Ne kadar güçlü patlayacak
+        Vector3 mutantPosition = mutant.transform.position;
+        Vector3 mutantScale = mutant.transform.localScale;
+
+        // Kan efekti oluþtur
+        if (mutantBloodEffect != null)
+        {
+            GameObject bloodEffect = Instantiate(mutantBloodEffect, mutantPosition, Quaternion.identity);
+
+            // Kan parçacýk sistemini ayarla
+            ParticleSystem bloodPS = bloodEffect.GetComponent<ParticleSystem>();
+            if (bloodPS != null)
+            {
+                var main = bloodPS.main;
+                main.startColor = mutantBloodColor;
+                main.maxParticles = 50; // Daha fazla kan parçacýðý
+            }
+
+            Destroy(bloodEffect, 3f);
+        }
+
+        // Mutant parçacýklarý oluþtur (daha fazla ve daha dramatik)
+        CreateCubeFragments(mutantPosition, mutantBloodColor, mutantScale, true);
+
+        // Ekstra kan damlalarý efekti
+        CreateBloodDroplets(mutantPosition);
+
+        // Kýsa gecikme
+        yield return new WaitForSeconds(destroyDelay);
+
+        // Mutant'ý oyundan kaldýr
+        Destroy(mutant);
+    }
+
+    // Geliþtirilmiþ parça oluþturma fonksiyonu
+    private void CreateCubeFragments(Vector3 position, Color color, Vector3 originalScale, bool isMutant)
+    {
+        int fragmentCount = isMutant ? mutantFragmentCount : 8;
+        float fragmentSize = originalScale.x * (isMutant ? 0.2f : 0.3f); // Mutant parçalarý daha küçük
+        float explosionForce = isMutant ? mutantExplosionForce : 5f;
+        float lifetime = isMutant ? mutantFragmentLifetime : 2f;
 
         for (int i = 0; i < fragmentCount; i++)
         {
@@ -139,11 +191,12 @@ public class SwordHitbox : MonoBehaviour
             GameObject fragment = GameObject.CreatePrimitive(PrimitiveType.Cube);
             fragment.transform.localScale = Vector3.one * fragmentSize;
 
-            // Rastgele yakýn bir pozisyon
+            // Rastgele yakýn bir pozisyon (mutantlar için daha geniþ yayýlým)
+            float spread = isMutant ? 0.6f : 0.3f;
             Vector3 randomOffset = new Vector3(
-                Random.Range(-0.3f, 0.3f),
-                Random.Range(-0.3f, 0.3f),
-                Random.Range(-0.3f, 0.3f)
+                Random.Range(-spread, spread),
+                Random.Range(-spread, spread),
+                Random.Range(-spread, spread)
             );
             fragment.transform.position = position + randomOffset;
 
@@ -153,14 +206,72 @@ public class SwordHitbox : MonoBehaviour
             {
                 fragRenderer.material = new Material(Shader.Find("Standard"));
                 fragRenderer.material.color = color;
+
+                // Mutant parçalarý için metalik görünüm
+                if (isMutant)
+                {
+                    fragRenderer.material.SetFloat("_Metallic", 0.3f);
+                    fragRenderer.material.SetFloat("_Glossiness", 0.7f);
+                }
             }
 
             // Fizik ekle
             Rigidbody rb = fragment.AddComponent<Rigidbody>();
-            rb.AddExplosionForce(explosionForce, position, 1f);
+            rb.mass = 0.1f; // Daha hafif parçacýklar
 
-            // Birkaç saniye sonra parçayý da yok et
-            Destroy(fragment, 2f);
+            // Patlama kuvveti uygula
+            rb.AddExplosionForce(explosionForce, position, 2f);
+
+            // Rastgele dönüþ ekle
+            rb.AddTorque(Random.insideUnitSphere * 10f);
+
+            // Parçayý yok et
+            Destroy(fragment, lifetime);
+        }
+    }
+
+    // Kan damlalarý efekti
+    private void CreateBloodDroplets(Vector3 position)
+    {
+        int dropletCount = 12; // Kan damla sayýsý
+
+        for (int i = 0; i < dropletCount; i++)
+        {
+            // Küçük küreler oluþtur (kan damlalarý)
+            GameObject droplet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            droplet.transform.localScale = Vector3.one * Random.Range(0.05f, 0.15f);
+
+            // Rastgele pozisyon
+            Vector3 randomOffset = new Vector3(
+                Random.Range(-0.5f, 0.5f),
+                Random.Range(0f, 0.8f), // Yukarý doðru daha fazla
+                Random.Range(-0.5f, 0.5f)
+            );
+            droplet.transform.position = position + randomOffset;
+
+            // Kan rengi
+            Renderer dropletRenderer = droplet.GetComponent<Renderer>();
+            if (dropletRenderer != null)
+            {
+                dropletRenderer.material = new Material(Shader.Find("Standard"));
+                dropletRenderer.material.color = mutantBloodColor;
+                dropletRenderer.material.SetFloat("_Glossiness", 0.8f); // Parlak kan
+            }
+
+            // Fizik
+            Rigidbody rb = droplet.AddComponent<Rigidbody>();
+            rb.mass = 0.05f;
+
+            // Yukarý doðru fýrlatma kuvveti
+            Vector3 force = new Vector3(
+                Random.Range(-3f, 3f),
+                Random.Range(3f, 6f),
+                Random.Range(-3f, 3f)
+            );
+            rb.AddForce(force, ForceMode.Impulse);
+
+            // Kan damlasýný yok et
+            Destroy(droplet, 3f);
         }
     }
 
