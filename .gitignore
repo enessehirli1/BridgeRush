@@ -1,0 +1,54 @@
+[LFS]
+*.psd
+*.tga
+*.jpg
+*.png
+*.fbx
+*.mp4
+*.mp3
+*.wav
+*.ogg
+
+[LFS tracking is optional]
+
+[LFS]
+
+# Unity
+[LFS tracking is optional]
+[LFS]
+
+[LFS]
+
+/[LFS]
+
+# Genel
+[LFS]
+Temp/
+Obj/
+Library/
+Logs/
+MemoryCaptures/
+Build/
+Builds/
+UserSettings/
+*.csproj
+*.sln
+*.user
+*.unityproj
+*.pidb
+*.suo
+*.tmp
+*.svd
+*.userprefs
+*.booproj
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# Diğer
+.DS_Store
+Thumbs.db
