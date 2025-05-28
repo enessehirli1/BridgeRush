@@ -30,13 +30,18 @@ public class GameManager : MonoBehaviour
     public float groundCheckDistance = 0.1f; // Yere olan mesafe kontrolü
     public Transform groundCheckTransform; // Ground check pozisyonu (ayaklar)
 
+    // Player'ın orijinal rigidbody ayarlarını saklamak için
+    private bool originalIsKinematic;
+    private RigidbodyInterpolation originalInterpolation;
+    private CollisionDetectionMode originalCollisionDetection;
+
     void Awake()
     {
         // Singleton deseni
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Sahneler arası geçişte nesneyi koru
+            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
@@ -48,15 +53,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         mAnimator = GetComponent<Animator>();
-
-        // Player referansını bul
         FindPlayerReference();
-
-        // TextMeshPro referanslarını bul (eğer Inspector'da atanmamışsa)
         FindAndSetupTextMesh();
-
-        // Oyun başladığında can sayısını TextMesh Pro'ya yaz
         UpdateLivesText();
+
+        // Player'ın orijinal rigidbody ayarlarını kaydet
+        SaveOriginalPlayerSettings();
+    }
+
+    // Player'ın orijinal ayarlarını kaydetme
+    void SaveOriginalPlayerSettings()
+    {
+        if (playerRigidbody != null)
+        {
+            originalIsKinematic = playerRigidbody.isKinematic;
+            originalInterpolation = playerRigidbody.interpolation;
+            originalCollisionDetection = playerRigidbody.collisionDetectionMode;
+        }
     }
 
     // Player referansını bulan metod
@@ -64,7 +77,6 @@ public class GameManager : MonoBehaviour
     {
         if (playerTransform == null)
         {
-            // "Player" tag'ine sahip objeyi bul
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
             {
@@ -72,16 +84,17 @@ public class GameManager : MonoBehaviour
                 playerAnimator = playerObj.GetComponent<Animator>();
                 playerRigidbody = playerObj.GetComponent<Rigidbody>();
 
-                // Yaygın hareket script isimlerini dene
                 playerMovementScript = playerObj.GetComponent("PlayerController") as MonoBehaviour;
                 if (playerMovementScript == null)
                     playerMovementScript = playerObj.GetComponent("PlayerMovement") as MonoBehaviour;
                 if (playerMovementScript == null)
                     playerMovementScript = playerObj.GetComponent("Movement") as MonoBehaviour;
+
+                // Ground check setup
+                SetupGroundCheck(playerObj);
             }
             else
             {
-                // Tag yoksa isimle ara
                 playerObj = GameObject.Find("Player");
                 if (playerObj != null)
                 {
@@ -89,27 +102,28 @@ public class GameManager : MonoBehaviour
                     playerAnimator = playerObj.GetComponent<Animator>();
                     playerRigidbody = playerObj.GetComponent<Rigidbody>();
 
-                    // Yaygın hareket script isimlerini dene
                     playerMovementScript = playerObj.GetComponent("PlayerController") as MonoBehaviour;
                     if (playerMovementScript == null)
                         playerMovementScript = playerObj.GetComponent("PlayerMovement") as MonoBehaviour;
                     if (playerMovementScript == null)
                         playerMovementScript = playerObj.GetComponent("Movement") as MonoBehaviour;
+
+                    SetupGroundCheck(playerObj);
                 }
             }
         }
         else
         {
-            // Transform referansı varsa diğer componentleri al
             playerAnimator = playerTransform.GetComponent<Animator>();
             playerRigidbody = playerTransform.GetComponent<Rigidbody>();
 
-            // Yaygın hareket script isimlerini dene
             playerMovementScript = playerTransform.GetComponent("PlayerController") as MonoBehaviour;
             if (playerMovementScript == null)
                 playerMovementScript = playerTransform.GetComponent("PlayerMovement") as MonoBehaviour;
             if (playerMovementScript == null)
                 playerMovementScript = playerTransform.GetComponent("Movement") as MonoBehaviour;
+
+            SetupGroundCheck(playerTransform.gameObject);
         }
 
         if (playerAnimator == null)
@@ -123,7 +137,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Her sahne yüklendiğinde çalışacak metod
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -136,14 +149,45 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Yeni sahnede player referansını tekrar bul
+        // Sahne yüklendiğinde gameHasEnded'i sıfırla
+        gameHasEnded = false;
+
+        // Player referansını tekrar bul
         FindPlayerReference();
-
-        // Yeni sahnede TextMeshPro referansını tekrar bul
         FindAndSetupTextMesh();
-
-        // Can sayısını güncelle
         UpdateLivesText();
+
+        // Player ayarlarını orijinal haline getir
+        RestoreOriginalPlayerSettings();
+
+        // Player'ın orijinal ayarlarını yeniden kaydet
+        SaveOriginalPlayerSettings();
+
+        Debug.Log("Scene loaded, player settings restored");
+    }
+
+    // Player ayarlarını orijinal haline getiren metod
+    void RestoreOriginalPlayerSettings()
+    {
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.isKinematic = originalIsKinematic;
+            playerRigidbody.interpolation = originalInterpolation;
+            playerRigidbody.collisionDetectionMode = originalCollisionDetection;
+            playerRigidbody.linearVelocity = Vector3.zero;
+            playerRigidbody.angularVelocity = Vector3.zero;
+        }
+
+        if (playerMovementScript != null)
+        {
+            playerMovementScript.enabled = true;
+        }
+
+        CharacterController characterController = playerTransform?.GetComponent<CharacterController>();
+        if (characterController != null)
+        {
+            characterController.enabled = true;
+        }
     }
 
     void FindAndSetupTextMesh()
@@ -158,17 +202,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Her karede kontrol et (başlangıçta güncellemeyi garantilemek için)
     void Update()
     {
-        // Eğer textRemainedLives içindeki değer remainingLives ile eşleşmiyorsa güncelle
         if (textRemainedLives != null && textRemainedLives.text != remainingLives.ToString())
         {
             UpdateLivesText();
         }
     }
 
-    // Can sayısını güncelleyen metod
     void UpdateLivesText()
     {
         if (textRemainedLives != null)
@@ -188,156 +229,174 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     void SetupGroundCheck(GameObject playerObj)
     {
         if (groundCheckTransform == null)
         {
-            // "GroundCheck" isimli child obje var mı kontrol et
-            Transform existingGroundCheck = playerObj.transform.Find("GroundCheck");
-            if (existingGroundCheck != null)
+            Transform rightToeBase = FindDeepChild(playerObj.transform, "mixamorig:RightToeBase");
+            if (rightToeBase != null)
             {
-                groundCheckTransform = existingGroundCheck;
-            }
-            else
-            {
-                // Yoksa player'ın kendisini kullan
-                groundCheckTransform = playerObj.transform;
-                Debug.Log("GroundCheck child object not found, using player transform for ground checking.");
+                groundCheckTransform = rightToeBase;
+                Debug.Log("GroundCheckTransform found at mixamorig:RightToeBase");
             }
         }
+    }
+
+    Transform FindDeepChild(Transform parent, string childName)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == childName)
+                return child;
+
+            Transform result = FindDeepChild(child, childName);
+            if (result != null)
+                return result;
+        }
+        return null;
     }
 
     bool IsPlayerGrounded()
     {
         if (groundCheckTransform == null || playerTransform == null)
+        {
+            Debug.LogWarning("GroundCheck or PlayerTransform is null!");
             return false;
+        }
 
-        // Raycast ile yere olan mesafeyi kontrol et
+        // Daha güvenilir ground check için birden fazla raycast
         Vector3 raycastOrigin = groundCheckTransform.position;
-        bool isGrounded = Physics.Raycast(raycastOrigin, Vector3.down, groundCheckDistance, groundLayerMask);
+        bool isGrounded = false;
 
-        // Debug için ray çiz (Scene view'da görünür)
+        // Merkez raycast
+        isGrounded = Physics.Raycast(raycastOrigin, Vector3.down, groundCheckDistance, groundLayerMask);
+
+        // Eğer merkez raycast başarısız olursa, çevresini de kontrol et
+        if (!isGrounded)
+        {
+            Vector3[] offsets = {
+                new Vector3(0.1f, 0, 0),
+                new Vector3(-0.1f, 0, 0),
+                new Vector3(0, 0, 0.1f),
+                new Vector3(0, 0, -0.1f)
+            };
+
+            foreach (Vector3 offset in offsets)
+            {
+                if (Physics.Raycast(raycastOrigin + offset, Vector3.down, groundCheckDistance, groundLayerMask))
+                {
+                    isGrounded = true;
+                    break;
+                }
+            }
+        }
+
+        // Debug için ray çiz
         Debug.DrawRay(raycastOrigin, Vector3.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
 
         return isGrounded;
     }
+
     public void endGame()
     {
         if (gameHasEnded == false)
         {
-            // Can sayısını azalt
             remainingLives--;
             Debug.Log("Life Lost - Remaining Lives: " + remainingLives);
 
+            gameHasEnded = true; // Önce bunu set et ki tekrar çağırılmasın
+
+            bool isGrounded = IsPlayerGrounded();
+            Debug.Log("Player is grounded: " + isGrounded);
+
             // Ölüm animasyonunu oynat
-            
-            if (IsPlayerGrounded())
-            {
-                PlayDeathAnimation();
-            }
-            
-            
-            
+            PlayDeathAnimation(isGrounded);
 
             if (remainingLives <= 0)
             {
-                // Canlar bittiyse:
-                // 1. Ölme animasyonu oynat (yukarıda oynatıldı)
-                // 2. Canları sıfırla (3'e geri getir)
-                // 3. Skoru da sıfırla
-                // 4. İlk level'a geri dön
                 remainingLives = initialLives;
 
-                // ScoreManager'a GameOver bilgisi gönder
                 if (ScoreManager.instance != null)
                 {
                     ScoreManager.instance.GameOver();
                 }
 
                 Debug.Log("Game Over - No Lives Left. Restarting from first level with " + remainingLives + " lives");
-                gameHasEnded = true;
-                if (IsPlayerGrounded())
-                {
-                    Invoke("RestartFromFirstLevel", restartDelay);
-                }
 
-                else if (!IsPlayerGrounded())
-                {
-                    Invoke("RestartFromFirstLevel", 1f);
-                }
-
+                float delay = isGrounded ? restartDelay : 1f;
+                Invoke("RestartFromFirstLevel", delay);
             }
             else
             {
-                // Hala can varsa mevcut sahneyi yeniden başlat
-                // ScoreManager'a ölüm bilgisi gönder
                 if (ScoreManager.instance != null)
                 {
                     ScoreManager.instance.PlayerDied();
                 }
 
-                gameHasEnded = true;
-                if (IsPlayerGrounded())
-                {
-                    Invoke("Restart", restartDelay);
-                }
-                else if (!IsPlayerGrounded())
-                {
-                    Invoke("Restart", 1f);
-                }
-
+                float delay = isGrounded ? restartDelay : 1f;
+                Invoke("Restart", delay);
             }
         }
     }
 
-    // Ölüm animasyonunu oynatma ve hareketi durdurma metodu
-    void PlayDeathAnimation()
+    void PlayDeathAnimation(bool isGrounded)
     {
         if (playerAnimator != null)
         {
-            playerAnimator.SetTrigger("Death");
-            Debug.Log("Death animation triggered!");
+            if (isGrounded)
+            {
+                playerAnimator.SetTrigger("Death"); // Yerde ölme animasyonu
+                StopPlayerMovement();
+            }
+            else
+            {
+                playerAnimator.SetTrigger("FallDeath"); // Düşme ölme animasyonu (kendi trigger isminizi kullanın)
+            }
+            Debug.Log("Death animation triggered! Grounded: " + isGrounded);
         }
         else
         {
             Debug.LogWarning("Player Animator not found! Trying to find player again...");
             FindPlayerReference();
 
-            // Tekrar dene
             if (playerAnimator != null)
             {
-                playerAnimator.SetTrigger("Death");
-                Debug.Log("Death animation triggered after refinding player!");
+                if (isGrounded)
+                {
+                    playerAnimator.SetTrigger("Death");
+                }
+                else
+                {
+                    playerAnimator.SetTrigger("FallDeath");
+                }
+                Debug.Log("Death animation triggered after refinding player! Grounded: " + isGrounded);
             }
+
+            StopPlayerMovement();
         }
 
-        // Player hareketini durdur
-        StopPlayerMovement();
+        
     }
 
-    // Player hareketini durduran metod
     void StopPlayerMovement()
     {
         if (playerTransform == null) return;
 
-        // 1. Rigidbody varsa fizik hareketini durdur
         if (playerRigidbody != null)
         {
             playerRigidbody.linearVelocity = Vector3.zero;
             playerRigidbody.angularVelocity = Vector3.zero;
-            // Rigidbody'yi kinematic yap (fizik etkilerini durdur)
             playerRigidbody.isKinematic = true;
             Debug.Log("Player rigidbody movement stopped!");
         }
 
-        // 2. Hareket scriptini devre dışı bırak (varsa)
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = false;
             Debug.Log("Player movement script disabled!");
         }
 
-        // 3. CharacterController varsa devre dışı bırak
         CharacterController characterController = playerTransform.GetComponent<CharacterController>();
         if (characterController != null)
         {
@@ -345,10 +404,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("CharacterController disabled!");
         }
 
-        // 4. Animator'daki hareket parametrelerini sıfırla (eğer hareket animasyonları varsa)
         if (playerAnimator != null)
         {
-            // Yaygın hareket parametreleri (kendi animator parametrelerinize göre ayarlayın)
             if (HasParameter(playerAnimator, "Speed"))
                 playerAnimator.SetFloat("Speed", 0f);
             if (HasParameter(playerAnimator, "Horizontal"))
@@ -362,7 +419,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Animator'da parametre var mı kontrol eden yardımcı metod
     bool HasParameter(Animator animator, string paramName)
     {
         foreach (AnimatorControllerParameter param in animator.parameters)
@@ -373,24 +429,20 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    // Player hareketini yeniden aktifleştiren metod (sahne yeniden yüklendiğinde otomatik olur ama elle de çağırabilirsiniz)
     void EnablePlayerMovement()
     {
         if (playerTransform == null) return;
 
-        // Rigidbody'yi tekrar kinematic olmaktan çıkar
         if (playerRigidbody != null)
         {
-            playerRigidbody.isKinematic = false;
+            playerRigidbody.isKinematic = originalIsKinematic;
         }
 
-        // Hareket scriptini aktifleştir
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = true;
         }
 
-        // CharacterController'ı aktifleştir
         CharacterController characterController = playerTransform.GetComponent<CharacterController>();
         if (characterController != null)
         {
@@ -398,30 +450,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Mevcut sahneyi yeniden yükler
     void Restart()
     {
-        gameHasEnded = false;
+        Debug.Log(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // İlk level'a geri döner ve canları sıfırlar
     void RestartFromFirstLevel()
     {
-        gameHasEnded = false;
         SceneManager.LoadScene(firstLevelIndex);
     }
 
-    // Sonraki seviyeye geçiş metodu
     public void GoToNextLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
 
-        // Eğer bir sonraki sahne varsa yükle
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            gameHasEnded = false;
             SceneManager.LoadScene(nextSceneIndex);
         }
         else
