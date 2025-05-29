@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\startmusic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|c:\\users\\eness\\desktop\\\u00FCni dersler\\3.2 bahar d\u00F6nemi\\bilgisayar oyunlar\u0131\\unity\\cgproject1\\assets\\scripts\\startmusic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\startmusic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|c:\\users\\eness\\desktop\\\u00FCni dersler\\3.2 bahar d\u00F6nemi\\bilgisayar oyunlar\u0131\\unity\\cgproject1\\assets\\musicmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\musicmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\triggernext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\triggernext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\sceneloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sceneloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\run.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,14 +39,6 @@
       "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\slash.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|c:\\users\\eness\\desktop\\\u00FCni dersler\\3.2 bahar d\u00F6nemi\\bilgisayar oyunlar\u0131\\unity\\cgproject1\\assets\\scripts\\triggernext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\triggernext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\enemyattacktrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyattacktrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,16 +51,8 @@
       "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multitriggerinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\sceneloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sceneloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|c:\\users\\eness\\desktop\\\u00FCni dersler\\3.2 bahar d\u00F6nemi\\bilgisayar oyunlar\u0131\\unity\\cgproject1\\assets\\scripts\\gotomenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\gotomenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gotomenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\slide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,33 +78,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "goToMenu.cs",
-              "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\goToMenu.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\goToMenu.cs",
-              "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\goToMenu.cs",
-              "RelativeToolTip": "Assets\\Scripts\\goToMenu.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MusicManager.cs",
+              "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\MusicManager.cs",
+              "RelativeDocumentMoniker": "Assets\\MusicManager.cs",
+              "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\MusicManager.cs",
+              "RelativeToolTip": "Assets\\MusicManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T23:41:33.122Z",
+              "WhenOpened": "2025-05-28T23:47:16.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "SceneLoader.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\SceneLoader.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SceneLoader.cs",
               "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\SceneLoader.cs",
               "RelativeToolTip": "Assets\\Scripts\\SceneLoader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T23:32:59.899Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "MultiTriggerInfo.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\MultiTriggerInfo.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MultiTriggerInfo.cs",
@@ -108,12 +112,11 @@
               "RelativeToolTip": "Assets\\Scripts\\MultiTriggerInfo.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAswK8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T19:06:26.493Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T19:06:26.493Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ObjectInteractions.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\ObjectInteractions.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ObjectInteractions.cs",
@@ -121,8 +124,7 @@
               "RelativeToolTip": "Assets\\Scripts\\ObjectInteractions.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAByAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T19:11:02.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T19:11:02.871Z"
             },
             {
               "$type": "Document",
@@ -132,14 +134,14 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\startMusic.cs",
               "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\startMusic.cs",
               "RelativeToolTip": "Assets\\Scripts\\startMusic.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBgAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-27T13:35:27.089Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "EnemyAttackTrigger.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\EnemyAttackTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAttackTrigger.cs",
@@ -147,38 +149,37 @@
               "RelativeToolTip": "Assets\\Scripts\\EnemyAttackTrigger.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T12:53:34.9Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-24T12:53:34.9Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "triggerNext.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\triggerNext.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\triggerNext.cs",
               "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\triggerNext.cs",
               "RelativeToolTip": "Assets\\Scripts\\triggerNext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T15:04:34.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
               "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\GameManager.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwHQBAAANAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAMwAUCAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T12:54:37.773Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "Slash.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Slash.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Slash.cs",
@@ -186,12 +187,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Slash.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T12:53:12.333Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-19T12:53:12.333Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Slide.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Slide.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Slide.cs",
@@ -203,7 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Jump.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Jump.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Jump.cs",
@@ -215,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "PlayerRespawnHandler.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\PlayerRespawnHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerRespawnHandler.cs",
@@ -223,12 +223,11 @@
               "RelativeToolTip": "Assets\\Scripts\\PlayerRespawnHandler.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAUwC8AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T19:48:17.658Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-28T19:48:17.658Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Run.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Run.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Run.cs",
@@ -236,20 +235,32 @@
               "RelativeToolTip": "Assets\\Scripts\\Run.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T12:52:57.602Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-19T12:52:57.602Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
               "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\PlayerController.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAjwEIAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T12:52:51.883Z"
+              "WhenOpened": "2025-05-19T12:52:51.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "goToMenu.cs",
+              "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\goToMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\goToMenu.cs",
+              "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\goToMenu.cs",
+              "RelativeToolTip": "Assets\\Scripts\\goToMenu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T23:41:33.122Z"
             }
           ]
         }
