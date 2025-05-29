@@ -10,6 +10,7 @@ TagManager:
   - Mutant
   - Fence
   - Bridge
+  - Menu
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class startMusic : MonoBehaviour
 {
     public AudioClip mainMusic;
@@ -7,26 +8,25 @@ public class startMusic : MonoBehaviour
 
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        // Sahne baþýnda tüm ayný tipte objeleri kontrol et
+        startMusic[] musicManagers = FindObjectsByType<startMusic>(FindObjectsSortMode.None);
+        if (musicManagers.Length > 1)
+        {
+            // Eðer birden fazla varsa, bu objeyi yok et
+            Destroy(gameObject);
+            return;
+        }
 
-        if (SceneManager.GetActiveScene().name == "Level01")
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = true;
+
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "Level01" || sceneName == "Level02")
         {
             audioSource.clip = mainMusic;
-            audioSource.loop = true;
             audioSource.Play();
-        }
-
-    }
-
-    /*
-    void Update()
-    {
-        // Oyun sahnesi deðiþtiðinde müziði durdur
-        if (SceneManager.GetActiveScene().name == "Level06" && audioSource.isPlaying)
-        {
-            Debug.Log("Stopping music in Level06");
-            audioSource.Stop();
+            Debug.Log("Music started in: " + sceneName);
         }
     }
-    */
 }

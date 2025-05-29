@@ -3,7 +3,6 @@ using UnityEngine;
 public class LevelComplete : MonoBehaviour
 {
     // Bu scripti, level sonu trigger'larýna ekleyebilirsiniz
-
     private void OnTriggerEnter(Collider other)
     {
         // Eðer player bu trigger'a girerse
