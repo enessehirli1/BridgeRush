@@ -43,6 +43,12 @@ public class startMusic : MonoBehaviour
                 Debug.Log("Music started in: " + sceneName);
             }
         }
+
+        else if (sceneName == "Level03" || sceneName == "Level04" || sceneName == "Level05" || sceneName == "Level06")
+        {
+            Debug.Log("Music not overlapped: " + sceneName);
+        }
+
         else
         {
             if (audioSource.isPlaying)
