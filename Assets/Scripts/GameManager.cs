@@ -146,6 +146,13 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Menu sahnesinde can sayısını sıfırla
+        if (scene.name == "Menu")
+        {
+            remainingLives = initialLives;
+            Debug.Log("Menu scene loaded - Lives reset to: " + remainingLives);
+        }
+
         // Sahne yüklendiğinde gameHasEnded'i sıfırla
         gameHasEnded = false;
 
@@ -415,7 +422,7 @@ public class GameManager : MonoBehaviour
             StopPlayerMovement();
         }
 
-        
+
     }
 
     void StopPlayerMovement()

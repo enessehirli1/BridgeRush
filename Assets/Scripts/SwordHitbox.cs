@@ -24,14 +24,49 @@ public class SwordHitbox : MonoBehaviour
     [SerializeField] private Color mutantBloodColor = new Color(0.8f, 0f, 0f, 1f); // Kan rengi
     [SerializeField] private float mutantFragmentLifetime = 4f; // Mutant parçalarýnýn yaþam süresi
 
+    [Header("Materials")]
+    [SerializeField] private Material fragmentMaterial; // Parça materyali
+    [SerializeField] private Material bloodMaterial; // Kan materyali
+
     private Animator animator; // Karakterin animatörü
     private bool hitboxActive = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        // Material'larý önceden hazýrla (Build için önemli)
+        PrepareFragmentMaterials();
+
         // Animasyon event'i animasyon dosyasýna eklenmeli
         // Animasyon editöründe kýlýç animasyonuna "ActivateHitbox" adlý event eklenmeli
+    }
+
+    private void PrepareFragmentMaterials()
+    {
+        // Fragment materyali
+        if (fragmentMaterial == null)
+        {
+            fragmentMaterial = new Material(Shader.Find("Standard"));
+            if (fragmentMaterial.shader == null)
+            {
+                // Fallback shader
+                fragmentMaterial = new Material(Shader.Find("Legacy Shaders/Diffuse"));
+            }
+        }
+
+        // Kan materyali
+        if (bloodMaterial == null)
+        {
+            bloodMaterial = new Material(Shader.Find("Standard"));
+            if (bloodMaterial.shader == null)
+            {
+                // Fallback shader
+                bloodMaterial = new Material(Shader.Find("Legacy Shaders/Diffuse"));
+            }
+            bloodMaterial.color = mutantBloodColor;
+            bloodMaterial.SetFloat("_Glossiness", 0.7f);
+        }
     }
 
     // Animasyon event'inden çaðrýlacak (Animator pencersinden ayarlanmalý)
@@ -73,7 +108,7 @@ public class SwordHitbox : MonoBehaviour
                 // Breakable objesi mi kontrol et
                 if (hitCollider.CompareTag("Breakable"))
                 {
-                    Debug.Log(hitCollider.name + " objesine vuruldu!");
+                    Debug.Log("Breaking: " + hitCollider.name + " at position: " + hitCollider.transform.position);
 
                     // SKOR EKLEME: Breakable için puan ekle
                     if (ScoreManager.instance != null)
@@ -88,8 +123,8 @@ public class SwordHitbox : MonoBehaviour
                     }
                     else
                     {
-                        // Efektli destroy
-                        StartCoroutine(BreakObject(hitCollider.gameObject));
+                        // Efektli destroy - Coroutine'siz versiyon
+                        BreakObject(hitCollider.gameObject);
                     }
                 }
                 // Mutant kontrolü ekle
@@ -104,16 +139,18 @@ public class SwordHitbox : MonoBehaviour
                     }
 
                     // Mutant özel efekti
-                    StartCoroutine(KillMutant(hitCollider.gameObject));
+                    KillMutant(hitCollider.gameObject);
                 }
             }
         }
     }
 
-    private IEnumerator BreakObject(GameObject objectToBreak)
+    // Coroutine kaldýrýldý - Direkt fonksiyon
+    private void BreakObject(GameObject objectToBreak)
     {
         // Objenin pozisyonunu ve rengini al
         Vector3 objPosition = objectToBreak.transform.position;
+        Vector3 objScale = objectToBreak.transform.localScale;
         Color objColor = Color.white; // Varsayýlan renk
 
         // Eðer objenin renderer'ý varsa rengini al
@@ -123,7 +160,12 @@ public class SwordHitbox : MonoBehaviour
             objColor = renderer.material.color;
         }
 
-        // Efekt oluþtur
+        Debug.Log($"Breaking object at position: {objPosition}, scale: {objScale}");
+
+        // ÖNCE OBJEYÝ YOK ET
+        Destroy(objectToBreak);
+
+        // SONRA EFEKTLERÝ OLUÞTUR
         if (breakEffect != null)
         {
             // Hazýr efekt prefabýný kullan
@@ -143,22 +185,22 @@ public class SwordHitbox : MonoBehaviour
         else
         {
             // Basit küp parçacýklarý oluþtur (efekt prefabý yoksa)
-            CreateCubeFragments(objPosition, objColor, objectToBreak.transform.localScale, false);
+            CreateCubeFragments(objPosition, objColor, objScale, false);
         }
-
-        // Kýsa bir gecikme
-        yield return new WaitForSeconds(destroyDelay);
-
-        // Objeyi yok et
-        Destroy(objectToBreak);
     }
 
-    // Mutant öldürme fonksiyonu
-    private IEnumerator KillMutant(GameObject mutant)
+    // Mutant öldürme fonksiyonu - Coroutine kaldýrýldý
+    private void KillMutant(GameObject mutant)
     {
         Vector3 mutantPosition = mutant.transform.position;
         Vector3 mutantScale = mutant.transform.localScale;
 
+        Debug.Log($"Killing mutant at position: {mutantPosition}");
+
+        // ÖNCE MUTANTI YOK ET
+        Destroy(mutant);
+
+        // SONRA EFEKTLERÝ OLUÞTUR
         // Kan efekti oluþtur
         if (mutantBloodEffect != null)
         {
@@ -181,12 +223,6 @@ public class SwordHitbox : MonoBehaviour
 
         // Ekstra kan damlalarý efekti
         CreateBloodDroplets(mutantPosition);
-
-        // Kýsa gecikme
-        yield return new WaitForSeconds(destroyDelay);
-
-        // Mutant'ý oyundan kaldýr
-        Destroy(mutant);
     }
 
     // Geliþtirilmiþ parça oluþturma fonksiyonu
@@ -196,6 +232,13 @@ public class SwordHitbox : MonoBehaviour
         float fragmentSize = originalScale.x * (isMutant ? 0.2f : 0.3f); // Mutant parçalarý daha küçük
         float explosionForce = isMutant ? mutantExplosionForce : 5f;
         float lifetime = isMutant ? mutantFragmentLifetime : 2f;
+
+        Debug.Log($"Creating {fragmentCount} fragments at {position}");
+
+        // Platform optimizasyonu
+#if !UNITY_EDITOR
+        fragmentCount = Mathf.Min(fragmentCount, 12); // Build'de parça sayýsýný sýnýrla
+#endif
 
         for (int i = 0; i < fragmentCount; i++)
         {
@@ -212,33 +255,49 @@ public class SwordHitbox : MonoBehaviour
             );
             fragment.transform.position = position + randomOffset;
 
-            // Renk ayarla
+            // Renk ayarla - Hazýr materyalleri kullan
             Renderer fragRenderer = fragment.GetComponent<Renderer>();
             if (fragRenderer != null)
             {
-                fragRenderer.material = new Material(Shader.Find("Standard"));
-                fragRenderer.material.color = color;
-
-                // Mutant parçalarý için metalik görünüm
                 if (isMutant)
                 {
-                    fragRenderer.material.SetFloat("_Metallic", 0.3f);
-                    fragRenderer.material.SetFloat("_Glossiness", 0.7f);
+                    fragRenderer.material = bloodMaterial;
+                }
+                else
+                {
+                    fragRenderer.material = fragmentMaterial;
+                    fragRenderer.material.color = color;
                 }
             }
 
             // Fizik ekle
             Rigidbody rb = fragment.AddComponent<Rigidbody>();
             rb.mass = 0.1f; // Daha hafif parçacýklar
+            rb.useGravity = true; // Açýkça belirt
+            rb.isKinematic = false; // Açýkça belirt
 
-            // Patlama kuvveti uygula
-            rb.AddExplosionForce(explosionForce, position, 2f);
+            Debug.Log($"Fragment {i} created at {fragment.transform.position}");
 
-            // Rastgele dönüþ ekle
-            rb.AddTorque(Random.insideUnitSphere * 10f);
+            // Patlama kuvvetini bir frame sonra uygula (Build için kritik)
+            StartCoroutine(ApplyForceNextFrame(rb, position, explosionForce));
 
             // Parçayý yok et
             Destroy(fragment, lifetime);
+        }
+    }
+
+    // Yeni coroutine: Force'u bir sonraki frame'de uygula
+    private IEnumerator ApplyForceNextFrame(Rigidbody rb, Vector3 explosionCenter, float explosionForce)
+    {
+        yield return null; // Bir frame bekle
+
+        if (rb != null)
+        {
+            // Patlama kuvveti uygula
+            rb.AddExplosionForce(explosionForce, explosionCenter, 2f);
+            rb.AddTorque(Random.insideUnitSphere * 10f);
+
+            Debug.Log($"Applied explosion force {explosionForce} to fragment at {rb.transform.position}");
         }
     }
 
@@ -246,6 +305,11 @@ public class SwordHitbox : MonoBehaviour
     private void CreateBloodDroplets(Vector3 position)
     {
         int dropletCount = 12; // Kan damla sayýsý
+
+        // Platform optimizasyonu
+#if !UNITY_EDITOR
+        dropletCount = Mathf.Min(dropletCount, 8); // Build'de sayýyý azalt
+#endif
 
         for (int i = 0; i < dropletCount; i++)
         {
@@ -261,29 +325,40 @@ public class SwordHitbox : MonoBehaviour
             );
             droplet.transform.position = position + randomOffset;
 
-            // Kan rengi
+            // Kan rengi - Hazýr materyali kullan
             Renderer dropletRenderer = droplet.GetComponent<Renderer>();
             if (dropletRenderer != null)
             {
-                dropletRenderer.material = new Material(Shader.Find("Standard"));
-                dropletRenderer.material.color = mutantBloodColor;
-                dropletRenderer.material.SetFloat("_Glossiness", 0.8f); // Parlak kan
+                dropletRenderer.material = bloodMaterial;
             }
 
             // Fizik
             Rigidbody rb = droplet.AddComponent<Rigidbody>();
             rb.mass = 0.05f;
+            rb.useGravity = true;
+            rb.isKinematic = false;
 
-            // Yukarý doðru fýrlatma kuvveti
+            // Yukarý doðru fýrlatma kuvveti - Bir frame sonra uygula
+            StartCoroutine(ApplyDropletForceNextFrame(rb));
+
+            // Kan damlasýný yok et
+            Destroy(droplet, 3f);
+        }
+    }
+
+    // Kan damlasý kuvveti uygulama coroutine'i
+    private IEnumerator ApplyDropletForceNextFrame(Rigidbody rb)
+    {
+        yield return null; // Bir frame bekle
+
+        if (rb != null)
+        {
             Vector3 force = new Vector3(
                 Random.Range(-3f, 3f),
                 Random.Range(3f, 6f),
                 Random.Range(-3f, 3f)
             );
             rb.AddForce(force, ForceMode.Impulse);
-
-            // Kan damlasýný yok et
-            Destroy(droplet, 3f);
         }
     }
 

@@ -513,6 +513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1096287449}
   scoreOffset: 17
+  breakableScore: 250
+  mutantScore: 750
 --- !u!4 &54837859
 Transform:
   m_ObjectHideFlags: 0
@@ -11194,7 +11196,6 @@ MonoBehaviour:
   restartDelay: 5
   initialLives: 3
   textRemainedLives: {fileID: 535924527}
-  firstLevelIndex: 0
   playerTransform: {fileID: 1538105790}
   groundLayerMask:
     serializedVersion: 2
@@ -12342,10 +12343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -14900,7 +14901,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1001 &903592445
 PrefabInstance:
@@ -25551,6 +25552,8 @@ MonoBehaviour:
   mutantExplosionForce: 8
   mutantBloodColor: {r: 0.8, g: 0, b: 0, a: 1}
   mutantFragmentLifetime: 4
+  fragmentMaterial: {fileID: 0}
+  bloodMaterial: {fileID: 0}
 --- !u!114 &1538105793
 MonoBehaviour:
   m_ObjectHideFlags: 0

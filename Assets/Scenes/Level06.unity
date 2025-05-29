@@ -21341,7 +21341,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1001 &896924496
 PrefabInstance:
@@ -38656,6 +38656,8 @@ MonoBehaviour:
   mutantExplosionForce: 8
   mutantBloodColor: {r: 0.8, g: 0, b: 0, a: 1}
   mutantFragmentLifetime: 4
+  fragmentMaterial: {fileID: 0}
+  bloodMaterial: {fileID: 0}
 --- !u!114 &1538105793
 MonoBehaviour:
   m_ObjectHideFlags: 0

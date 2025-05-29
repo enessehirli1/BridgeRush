@@ -37,6 +37,9 @@ public class ScoreManager : MonoBehaviour
     public float breakableScore = 250f;
     public float mutantScore = 750f;
 
+    [Header("Menu Settings")]
+    [SerializeField] private List<string> menuSceneNames = new List<string>() { "Menu", "MainMenu", "StartMenu" }; // Menu sahne isimleri
+    private bool hasResetForMenu = false; // Menu'ya girildiðinde bir kez reset yapmasý için
 
     private void Awake()
     {
@@ -72,9 +75,19 @@ public class ScoreManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Sahne yüklendiðinde çaðrýlýr
-        InitializeCurrentScene();
-
         Debug.Log("Sahne yüklendi: " + scene.name + " (index: " + scene.buildIndex + ")");
+
+        // Menu sahnesine girildiðini kontrol et
+        if (IsMenuScene(scene.name))
+        {
+            HandleMenuSceneEntered();
+            return; // Menu sahnesi ise diðer iþlemleri yapma
+        }
+
+        // Menu'dan çýktýðýmýzda reset flag'ini sýfýrla
+        hasResetForMenu = false;
+
+        InitializeCurrentScene();
 
         // Eðer bu bir respawn deðilse ve yeni bir sahneye geçiyorsak:
         if (!isRespawning)
@@ -122,6 +135,39 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreDisplay();
     }
 
+    // Menu sahnesine girildiðinde çaðrýlacak fonksiyon
+    private void HandleMenuSceneEntered()
+    {
+        if (!hasResetForMenu)
+        {
+            Debug.Log("Menu sahnesine girildi. High score sýfýrlanýyor...");
+
+            // Tüm skor verilerini temizle
+            scenesScoreData.Clear();
+
+            // Saved high score'u sýfýrla
+            savedHighScore = 0f;
+
+            // Reset flag'ini set et
+            hasResetForMenu = true;
+
+            Debug.Log("Tüm skorlar sýfýrlandý.");
+        }
+    }
+
+    // Sahnenin menu sahne olup olmadýðýný kontrol et
+    private bool IsMenuScene(string sceneName)
+    {
+        foreach (string menuName in menuSceneNames)
+        {
+            if (sceneName.Equals(menuName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void InitializeCurrentScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -158,6 +204,12 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
+        // Menu sahnesindeyse Update'i çalýþtýrma
+        if (IsMenuScene(SceneManager.GetActiveScene().name))
+        {
+            return;
+        }
+
         // Player referansý yoksa bulmayý dene
         if (playerTransform == null)
         {
@@ -273,6 +325,15 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Game Over: En yüksek skor kaydedildi (" + savedHighScore + ") ve diðer veriler sýfýrlandý.");
     }
 
+    // Manuel olarak skorlarý sýfýrlama fonksiyonu (Menu butonlarý için kullanýlabilir)
+    public void ResetAllScores()
+    {
+        scenesScoreData.Clear();
+        savedHighScore = 0f;
+        hasResetForMenu = false;
+        Debug.Log("Tüm skorlar manuel olarak sýfýrlandý.");
+    }
+
     public float GetSavedHighScore()
     {
         return savedHighScore;
@@ -306,6 +367,7 @@ public class ScoreManager : MonoBehaviour
                       " - High Score: " + kvp.Value.sceneHighScore);
         }
     }
+
     // Son sahnenin (Level06) en yüksek skorunu verir
     public float GetLastSceneHighScore()
     {
@@ -331,4 +393,13 @@ public class ScoreManager : MonoBehaviour
         return highestScore;
     }
 
+    // Menu sahne isimleri listesine yeni isim ekleme fonksiyonu
+    public void AddMenuSceneName(string sceneName)
+    {
+        if (!menuSceneNames.Contains(sceneName))
+        {
+            menuSceneNames.Add(sceneName);
+            Debug.Log("Menu sahne listesine eklendi: " + sceneName);
+        }
+    }
 }
