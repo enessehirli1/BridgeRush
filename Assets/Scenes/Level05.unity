@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.001
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -755,6 +755,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1096287449}
   scoreOffset: 17
+  breakableScore: 250
+  mutantScore: 750
 --- !u!4 &54837859
 Transform:
   m_ObjectHideFlags: 0
@@ -9930,7 +9932,6 @@ MonoBehaviour:
   restartDelay: 5
   initialLives: 3
   textRemainedLives: {fileID: 535924527}
-  firstLevelIndex: 0
   playerTransform: {fileID: 1538105790}
   groundLayerMask:
     serializedVersion: 2

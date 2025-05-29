@@ -11,4 +11,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Level02");
     }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }

@@ -13,9 +13,6 @@ public class GameManager : MonoBehaviour
     public int initialLives = 3; // Başlangıç can sayısı
     public TextMeshPro textRemainedLives; // TextMesh Pro referansı
 
-    // İlk level'ın sahne indeksi (genelde 0 veya 1 olur)
-    public int firstLevelIndex = 0;
-
     // Animator referansı
     private Animator mAnimator;
 
@@ -500,7 +497,8 @@ public class GameManager : MonoBehaviour
 
     void RestartFromFirstLevel()
     {
-        SceneManager.LoadScene(firstLevelIndex);
+        Debug.Log("Lost ekranına gidiliyor");
+        SceneManager.LoadScene("Lost");
     }
 
     public void GoToNextLevel()

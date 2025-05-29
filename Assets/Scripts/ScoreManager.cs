@@ -31,6 +31,7 @@ public class ScoreManager : MonoBehaviour
 
     // Skor Hesaplama Ýçin Offset
     public float scoreOffset = 17f;
+    private float savedHighScore = 0f;
 
     [Header("Enemy Killing Points")]
     public float breakableScore = 250f;
@@ -264,9 +265,23 @@ public class ScoreManager : MonoBehaviour
     // Tüm canlar bittiðinde çaðrýlacak metod (tam Game Over)
     public void GameOver()
     {
-        // Tüm skor verilerini temizle
+        // Önce en yüksek skoru kaydet
+        savedHighScore = GetOverallHighScore();
+
+        // Sonra tüm skor verilerini temizle
         scenesScoreData.Clear();
-        Debug.Log("Game Over: Tüm skor verileri sýfýrlandý.");
+        Debug.Log("Game Over: En yüksek skor kaydedildi (" + savedHighScore + ") ve diðer veriler sýfýrlandý.");
+    }
+
+    public float GetSavedHighScore()
+    {
+        return savedHighScore;
+    }
+
+    public void ResetSavedHighScore()
+    {
+        savedHighScore = 0f;
+        Debug.Log("Saved high score reset to 0");
     }
 
     // Sahnenin mevcut skorunu verir
@@ -291,4 +306,29 @@ public class ScoreManager : MonoBehaviour
                       " - High Score: " + kvp.Value.sceneHighScore);
         }
     }
+    // Son sahnenin (Level06) en yüksek skorunu verir
+    public float GetLastSceneHighScore()
+    {
+        int lastSceneIndex = 6; // Level06'nýn build index'i
+        if (scenesScoreData.ContainsKey(lastSceneIndex))
+        {
+            return scenesScoreData[lastSceneIndex].sceneHighScore;
+        }
+        return 0;
+    }
+
+    // Genel en yüksek skoru verir (tüm sahneler arasýndan)
+    public float GetOverallHighScore()
+    {
+        float highestScore = 0;
+        foreach (var kvp in scenesScoreData)
+        {
+            if (kvp.Value.sceneHighScore > highestScore)
+            {
+                highestScore = kvp.Value.sceneHighScore;
+            }
+        }
+        return highestScore;
+    }
+
 }
