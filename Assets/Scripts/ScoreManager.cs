@@ -32,6 +32,11 @@ public class ScoreManager : MonoBehaviour
     // Skor Hesaplama Ýçin Offset
     public float scoreOffset = 17f;
 
+    [Header("Enemy Killing Points")]
+    public float breakableScore = 250f;
+    public float mutantScore = 750f;
+
+
     private void Awake()
     {
         // Singleton oluþturma
@@ -199,6 +204,45 @@ public class ScoreManager : MonoBehaviour
                 scoreText.text = scenesScoreData[currentSceneIndex].currentScore.ToString("0");
             }
         }
+    }
+
+    public void AddEnemyScore(string enemyType)
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (!scenesScoreData.ContainsKey(currentSceneIndex))
+        {
+            InitializeCurrentScene();
+        }
+
+        SceneScoreData sceneData = scenesScoreData[currentSceneIndex];
+
+        float scoreToAdd = 0f;
+
+        switch (enemyType.ToLower())
+        {
+            case "breakable":
+                scoreToAdd = breakableScore;
+                Debug.Log("Breakable obje yok edildi! +" + breakableScore + " puan");
+                break;
+            case "mutant":
+                scoreToAdd = mutantScore;
+                Debug.Log("Mutant öldürüldü! +" + mutantScore + " puan");
+                break;
+            default:
+                Debug.LogWarning("Bilinmeyen düþman tipi: " + enemyType);
+                return;
+        }
+
+        // Puaný ekle
+        sceneData.baseScore += scoreToAdd;
+        sceneData.currentScore += scoreToAdd;
+        sceneData.sceneHighScore = Mathf.Max(sceneData.sceneHighScore, sceneData.currentScore);
+
+        // UI'yi güncelle
+        UpdateScoreDisplay();
+
+        Debug.Log("Toplam skor: " + sceneData.currentScore);
     }
 
     // Oyuncu öldüðünde çaðrýlacak metod

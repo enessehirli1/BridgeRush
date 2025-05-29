@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|c:\\users\\eness\\desktop\\\u00FCni dersler\\3.2 bahar d\u00F6nemi\\bilgisayar oyunlar\u0131\\unity\\cgproject1\\assets\\scripts\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\musicmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\musicmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|c:\\users\\eness\\desktop\\\u00FCni dersler\\3.2 bahar d\u00F6nemi\\bilgisayar oyunlar\u0131\\unity\\cgproject1\\assets\\scripts\\swordhitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\swordhitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|c:\\users\\eness\\desktop\\\u00FCni dersler\\3.2 bahar d\u00F6nemi\\bilgisayar oyunlar\u0131\\unity\\cgproject1\\assets\\scripts\\startmusic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\startmusic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\musicmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|solutionrelative:assets\\musicmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25A6E94A-2D99-0BDB-B930-A0C65C17B962}|Assembly-CSharp.csproj|C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\assets\\scripts\\multitriggerinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -79,6 +87,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "SwordHitbox.cs",
+              "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\SwordHitbox.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SwordHitbox.cs",
+              "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\SwordHitbox.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SwordHitbox.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T13:16:47.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScoreManager.cs",
+              "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\ScoreManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ScoreManager.cs",
+              "ToolTip": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\ScoreManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ScoreManager.cs",
+              "ViewState": "AgIAAM8AAAAAAAAAAIAwwNsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T13:14:32.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MusicManager.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\MusicManager.cs",
               "RelativeDocumentMoniker": "Assets\\MusicManager.cs",
@@ -86,11 +120,12 @@
               "RelativeToolTip": "Assets\\MusicManager.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAQwB4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T23:47:16.461Z"
+              "WhenOpened": "2025-05-28T23:47:16.461Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "SceneLoader.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\SceneLoader.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SceneLoader.cs",
@@ -102,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "MultiTriggerInfo.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\MultiTriggerInfo.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MultiTriggerInfo.cs",
@@ -114,7 +149,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ObjectInteractions.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\ObjectInteractions.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ObjectInteractions.cs",
@@ -126,7 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "startMusic.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\startMusic.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\startMusic.cs",
@@ -139,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "EnemyAttackTrigger.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\EnemyAttackTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAttackTrigger.cs",
@@ -151,7 +186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "triggerNext.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\triggerNext.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\triggerNext.cs",
@@ -163,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
@@ -175,7 +210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Slash.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Slash.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Slash.cs",
@@ -187,7 +222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Slide.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Slide.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Slide.cs",
@@ -199,7 +234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Jump.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Jump.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Jump.cs",
@@ -211,7 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "PlayerRespawnHandler.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\PlayerRespawnHandler.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerRespawnHandler.cs",
@@ -223,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Run.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\Run.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Run.cs",
@@ -235,7 +270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
@@ -247,7 +282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "goToMenu.cs",
               "DocumentMoniker": "C:\\Users\\eness\\Desktop\\\u00DCni Dersler\\3.2 Bahar D\u00F6nemi\\Bilgisayar Oyunlar\u0131\\unity\\CGProject1\\Assets\\Scripts\\goToMenu.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\goToMenu.cs",

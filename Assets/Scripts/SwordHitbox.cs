@@ -75,6 +75,12 @@ public class SwordHitbox : MonoBehaviour
                 {
                     Debug.Log(hitCollider.name + " objesine vuruldu!");
 
+                    // SKOR EKLEME: Breakable için puan ekle
+                    if (ScoreManager.instance != null)
+                    {
+                        ScoreManager.instance.AddEnemyScore("Breakable");
+                    }
+
                     if (useSimpleDestroy)
                     {
                         // Basit destroy
@@ -90,6 +96,12 @@ public class SwordHitbox : MonoBehaviour
                 else if (hitCollider.CompareTag("Mutant"))
                 {
                     Debug.Log("Mutant " + hitCollider.name + " öldürüldü!");
+
+                    // SKOR EKLEME: Mutant için puan ekle
+                    if (ScoreManager.instance != null)
+                    {
+                        ScoreManager.instance.AddEnemyScore("Mutant");
+                    }
 
                     // Mutant özel efekti
                     StartCoroutine(KillMutant(hitCollider.gameObject));
